@@ -43,9 +43,9 @@ users = db["users"]
 
 # Ensure container exists
 try:
-    blob_service_client.create_container(CONTAINER_NAME)
+    blob_service_client.create_container(CONTAINER_NAME)
 except Exception:
-    pass  # already exists
+    pass  # already exists
 
 container_client = blob_service_client.get_container_client(CONTAINER_NAME)
 
@@ -534,3 +534,4 @@ def handle_file_too_large(e):
         ),
         413,
     )
+
