@@ -73,19 +73,19 @@ discord = DiscordOAuth2Session(app)
 
 # Email OTP (Gmail SMTP)
 def send_otp_email(email):
-    otp = str(random.randint(100000, 999999))
-    msg = MIMEText(f"Your OTP for Space Edge is: {otp}")
-    msg['Subject'] = "Your Space Edge OTP"
-    msg['From'] = "noreplyverifyspaceedge@gmail.com"
-    msg['To'] = email
+    otp = str(random.randint(100000, 999999))
+    msg = MIMEText(f"Your OTP for Space Edge is: {otp}")
+    msg['Subject'] = "Your Space Edge OTP"
+    msg['From'] = "noreplyverifyspaceedge@gmail.com"
+    msg['To'] = email
 
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login('noreplyverifyspaceedge@gmail.com', 'jgkz knoi wqay ymqr')
-    server.sendmail('noreplyverifyspaceedge@gmail.com', [email], msg.as_string())
-    server.quit()
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login('noreplyverifyspaceedge@gmail.com', 'jgkz knoi wqay ymqr')
+    server.sendmail('noreplyverifyspaceedge@gmail.com', [email], msg.as_string())
+    server.quit()
 
-    return otp
+    return otp
 
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()
