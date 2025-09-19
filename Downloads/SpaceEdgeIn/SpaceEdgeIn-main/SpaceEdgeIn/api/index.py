@@ -56,21 +56,26 @@ app.config['SECRET_KEY'] = '309d0aed19d3e49c754f974d8827b32bd1ab0351894fea190155
 from urllib.parse import urlencode
 
 # Discord OAuth2
+from urllib.parse import quote_plus
+
 app.config["DISCORD_CLIENT_ID"] = "1410341983284760776"
 app.config["DISCORD_CLIENT_SECRET"] = "JJwIjGOJhiOcBRWxAHMR8lcl1cvEmH0W"
 app.config["DISCORD_REDIRECT_URI"] = "https://spaceedge-dz8h.onrender.com/discord/callback"
 
-# Always build the URL dynamically from config
+# Always build the URL dynamically from config (with encoding!)
+redirect_uri = quote_plus(app.config["DISCORD_REDIRECT_URI"])
+
 AUTHORIZATION_BASE_URL = (
     f"https://discord.com/oauth2/authorize"
     f"?client_id={app.config['DISCORD_CLIENT_ID']}"
     f"&response_type=code"
-    f"&redirect_uri={app.config['DISCORD_REDIRECT_URI']}"
+    f"&redirect_uri={redirect_uri}"
     f"&scope=identify+email"
 )
 
 # Init session
 discord = DiscordOAuth2Session(app)
+
 
 
 # Build authorization URL dynamically
