@@ -15,6 +15,17 @@ from email.mime.text import MIMEText
 from pymongo import MongoClient
 from flask import abort
 from flask import Flask, jsonify, request
+import os
+from flask import Flask
+
+# Get the absolute path to the directory containing this script.
+# This makes the path relative to the repository root.
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+
+# Create the Flask app, pointing to the templates folder
+app = Flask(__name__, template_folder=template_dir)
+
+# ... rest of your code
 
 
 
@@ -530,6 +541,7 @@ def handle_file_too_large(e):
         ),
         413,
     )
+
 
 
 
