@@ -59,12 +59,13 @@ app.config["DISCORD_REDIRECT_URI"] = "https://spaceedgein.onrender.com/discord/c
 
 # Always build the URL dynamically from config
 AUTHORIZATION_BASE_URL = (
-    f"https://discord.com/oauth2/authorize"
-    f"?client_id={app.config['DISCORD_CLIENT_ID']}"
-    f"&response_type=code"
-    f"&redirect_uri={app.config['DISCORD_REDIRECT_URI']}"
-    f"&scope=identify+email"
+    f"https://discord.com/oauth2/authorize"
+    f"?client_id={app.config['DISCORD_CLIENT_ID']}"
+    f"&response_type=code"
+    f"&redirect_uri={app.config['DISCORD_REDIRECT_URI']}"
+    f"&scope=identify+email"
 )
+
 
 # Init session
 discord = DiscordOAuth2Session(app)
@@ -534,4 +535,5 @@ def handle_file_too_large(e):
         ),
         413,
     )
+
 
