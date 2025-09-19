@@ -47,11 +47,23 @@ container_client = blob_service_client.get_container_client(CONTAINER_NAME)
 app.config['SECRET_KEY'] = '309d0aed19d3e49c754f974d8827b32bd1ab0351894fea1901557f8a47e64183'
 
 # Discord OAuth2
+# Discord OAuth2
 app.config["DISCORD_CLIENT_ID"] = "1410341983284760776"
 app.config["DISCORD_CLIENT_SECRET"] = "JJwIjGOJhiOcBRWxAHMR8lcl1cvEmH0W"
 app.config["DISCORD_REDIRECT_URI"] = "https://spaceedge-dz8h.onrender.com/discord/callback"
-AUTHORIZATION_BASE_URL = "https://discord.com/oauth2/authorize?client_id=1410341983284760776&response_type=code&redirect_uri=https%3A%2F%2Fspaceedge-dz8h.onrender.com%2Fdiscord%2Fcallback&scope=identify+email"
+
+# Always build the URL dynamically from config
+AUTHORIZATION_BASE_URL = (
+    f"https://discord.com/oauth2/authorize"
+    f"?client_id={app.config['DISCORD_CLIENT_ID']}"
+    f"&response_type=code"
+    f"&redirect_uri={app.config['DISCORD_REDIRECT_URI']}"
+    f"&scope=identify+email"
+)
+
+# Init session
 discord = DiscordOAuth2Session(app)
+
 
 
 # Email OTP (Gmail SMTP)
@@ -518,6 +530,7 @@ def handle_file_too_large(e):
         ),
         413,
     )
+
 
 
 
