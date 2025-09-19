@@ -50,7 +50,7 @@ app.config['SECRET_KEY'] = '309d0aed19d3e49c754f974d8827b32bd1ab0351894fea190155
 app.config["DISCORD_CLIENT_ID"] = "1410341983284760776"
 app.config["DISCORD_CLIENT_SECRET"] = "JJwIjGOJhiOcBRWxAHMR8lcl1cvEmH0W"
 app.config["DISCORD_REDIRECT_URI"] = "https://spaceedge-dz8h.onrender.com/discord/callback/"
-AUTHORIZATION_BASE_URL = "https://discord.com/oauth2/authorize?client_id=...&redirect_uri=https%3A%2F%2Fspaceedge-dz8h.onrender.com%2Fdiscord%2Fcallback&response_type=code&scope=identify+email"
+AUTHORIZATION_BASE_URL = "https://discord.com/oauth2/authorize?client_id=1410341983284760776&response_type=code&redirect_uri=https%3A%2F%2Fspaceedge-dz8h.onrender.com%2Fdiscord%2Fcallback%2F&scope=identify+email"
 discord = DiscordOAuth2Session(app)
 
 
@@ -518,6 +518,7 @@ def handle_file_too_large(e):
         ),
         413,
     )
+
 
 
 
